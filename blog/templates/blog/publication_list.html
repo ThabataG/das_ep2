@@ -1,18 +1,13 @@
-<html>
-    <head>
-        <title>DAS blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">DAS EP1 Blog</a></h1>
-        </div>
-
-        {% for publication in publication %}
-    		<div>
-        		<p>published: {{ publication.published_date }}</p>
-        		<h1><a href="">{{ publication.title }}</a></h1>
-        		<p>{{ publication.contet|linebreaks }}</p>
-    		</div>
+{% extends 'blog/base.html' %}
+	{% block content %}
+		{% for publication in publication %}
+		    <div class="publication">
+		        <div class="date">
+		            {{ publication.published_date }}
+		        </div>
+		       <h1><a href="{% url 'blog.views.publication_detail' pk=publication.pk %}">{{ publication.title }}</a></h1>
+		        <p>{{ publication.contet|linebreaks }}</p>
+		    </div>
 		{% endfor %}
-    </body>
-</html>
+	{% endblock content %}
+      

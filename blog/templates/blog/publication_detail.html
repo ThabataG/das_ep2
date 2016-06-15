@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="publication">
+        {% if publication.published_date %}
+            <div class="date">
+                {{ publication.published_date }}
+            </div>
+        {% endif %}
+        <a class="btn btn-default" href="{% url 'publication_edit' pk=publication.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <h1>{{ publication.title }}</h1>
+        <p>{{ publication.contet|linebreaks }}</p>
+    </div>
+{% endblock %}

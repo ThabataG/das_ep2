@@ -7,16 +7,12 @@
             <h1><a href="">DAS EP1 Blog</a></h1>
         </div>
 
-        <div>
-            <p>published: 15.06.2016, 3:14</p>
-            <h2><a href="">Post de Teste</a></h2>
-            <p>Este eh um post de teste do blog.</p>
-        </div>
-
-        <div>
-            <p>published: 15.06.2016, 4:14</p>
-            <h2><a href="">Segundo Post de Teste</a></h2>
-            <p>Este eh o segundo post de teste do blog para a disciplina de DAS.</p>
-        </div>
+        {% for publication in publication %}
+    		<div>
+        		<p>published: {{ publication.published_date }}</p>
+        		<h1><a href="">{{ publication.title }}</a></h1>
+        		<p>{{ publication.contet|linebreaks }}</p>
+    		</div>
+		{% endfor %}
     </body>
 </html>

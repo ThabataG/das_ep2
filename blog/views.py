@@ -6,7 +6,7 @@ from .models import Publication
 from .forms import PublicationForm
 
 def publication_list(request):
-	publication = Publication.objects.order_by('published_date')
+	publication = Publication.objects.order_by('-published_date')
 	return render(request, 'blog/publication_list.html', {'publication':publication})
 
 def publication_detail (request, pk):

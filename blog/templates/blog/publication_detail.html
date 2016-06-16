@@ -9,6 +9,7 @@
         {% endif %}
         <a class="btn btn-default" href="{% url 'publication_edit' pk=publication.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <h1>{{ publication.title }}</h1>
+        <h2>{{ publication.puplished_type }}</h2>
         <p>{{ publication.contet|linebreaks }}</p>
     </div>
 {% endblock %}

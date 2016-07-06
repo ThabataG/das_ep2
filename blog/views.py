@@ -7,6 +7,9 @@ from .forms import PublicationForm
 
 def publication_list(request):
 	publication = Publication.objects.order_by('-published_date')
+	var_get_search = request.GET.get('search_box')
+	if var_get_search is not None:
+		publication = publication.filter(title__icontains=var_get_search)
 	return render(request, 'blog/publication_list.html', {'publication':publication})
 
 def publication_detail (request, pk):
@@ -39,3 +42,4 @@ def publication_edit(request, pk):
 	else:
 		form = PublicationForm(instance = publication)
 	return render (request, 'blog/publication_edit.html', {'form': form})
+

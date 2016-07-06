@@ -1,11 +1,18 @@
 {% extends 'blog/base.html' %}
 	{% block content %}
+		<form class="navbar-form navbar-right" action="." method="get">
+		<input id="search_box" name="search_box" type="text" placeholder="Pesquisar..." class="form-control">
+		<button type="submit" class="btn btn-success form-control"><span class="glyphicon glyphicon-search"></span></button>
+		</form>
+		
+		<h1><strong>Todas as Publicações</strong></h1>
+		<br />
 		{% for publication in publication %}
 		    <div class="publication">
 		        <div class="date">
 		            {{ publication.published_date }}
 		        </div>
-		       <h1><a href="{% url 'blog.views.publication_detail' pk=publication.pk %}">{{ publication.title }}</a></h1>
+		       <h2><a href="{% url 'blog.views.publication_detail' pk=publication.pk %}">{{ publication.title }}</a></h2>
 		       <h3>{{ publication.published_type }}</h3>
 		        <p>{{ publication.contet|linebreaks }}</p>
 		    </div>

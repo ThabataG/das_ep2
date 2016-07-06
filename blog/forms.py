@@ -5,6 +5,7 @@ TYPE_CHOISE = (
     ('Duvidas', 'Duvidas'),
     ('Erros', 'Erros'),
     ('Informações', 'Informações'),
+    ('Discussões', 'Discussões'),
     ('Outros', 'Outros'),
 )
 

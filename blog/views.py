@@ -65,7 +65,7 @@ def form_contact(request):
 		    from_email = request.POST.get('from_email', '')
 		    if subject and message and from_email:
 		        try:
-		            send_mail(subject, message, from_email, ['admin@example.com'])
+		            send_mail(subject, message, from_email, ['das.duvidas.unb@gmail.com'])
 		        except BadHeaderError:
 		            return HttpResponse('Invalid header found.')
 		        return HttpResponseRedirect('/contact/thanks/')

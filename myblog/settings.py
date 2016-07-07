@@ -123,3 +123,9 @@ STATIC_URL = '/static/'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'das.duvidas.unb@gmail.com'
+EMAIL_HOST_PASSWORD = 'UNBFGA12016'
+EMAIL_PORT = 587

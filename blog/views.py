@@ -2,6 +2,9 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from .models import Publication
 from .forms import PublicationForm
 
@@ -42,4 +45,28 @@ def publication_edit(request, pk):
 	else:
 		form = PublicationForm(instance = publication)
 	return render (request, 'blog/publication_edit.html', {'form': form})
+
+@login_required(login_url='/accounts/login/')
+def protected_view(request):
+    return render(request, 'blog/protected.html', {'current_user': request.user})
+
+def message(request):
+    return HttpResponse('Accesso Negado!')
+
+def form_contact(request):
+	if request.method == "POST":
+		form = ContactForm(request.POST)
+
+		if form.is_valid():
+		    subject = request.POST.get('subject', '')
+		    message = request.POST.get('message', '')
+		    from_email = request.POST.get('from_email', '')
+		    if subject and message and from_email:
+		        try:
+		            send_mail(subject, message, from_email, ['admin@example.com'])
+		        except BadHeaderError:
+		            return HttpResponse('Invalid header found.')
+		        return HttpResponseRedirect('/contact/thanks/')
+		    else:
+		        return HttpResponse('Make sure all fields are entered and valid.')
 

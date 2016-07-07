@@ -10,6 +10,9 @@
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
+        {% include "blog/menu.html" %}
+        <br />
+        <br />
         <div class="page-header">
             <a href="{% url 'blog.views.publication_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
             <h1><a href="{% url 'blog.views.publication_list' %}">Blog Colaborativo de DAS</a></h1>

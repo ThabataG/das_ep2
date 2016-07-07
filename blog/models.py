@@ -16,3 +16,12 @@ class Publication(models.Model):
 
 	def __str__ (self):
 		return self.title
+
+class Contact(models.Model):
+
+	subject = models.CharField(max_length = 200)
+	message = models.TextField()
+	from_email = models.CharField(max_length = 200)
+
+	def __str__ (self):
+		return self.title

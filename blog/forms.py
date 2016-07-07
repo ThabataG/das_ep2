@@ -18,7 +18,7 @@ class PublicationForm (forms.ModelForm):
 
 	published_type = forms.ChoiceField(choices = TYPE_CHOISE)
 
-class ContactForm(forms.Form):
+class ContactForm(forms.ModelForm):
 	class Meta:
 		model = Contact
 		fields = ('subject', 'message', 'from_email',)

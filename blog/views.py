@@ -6,7 +6,9 @@ from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import Publication
+from .models import Contact
 from .forms import PublicationForm
+from .forms import ContactForm
 
 def publication_list(request):
 	publication = Publication.objects.order_by('-published_date')
@@ -69,4 +71,6 @@ def form_contact(request):
 		        return HttpResponseRedirect('/contact/thanks/')
 		    else:
 		        return HttpResponse('Make sure all fields are entered and valid.')
-
+	else:
+		form = ContactForm()
+	return render (request, 'blog/email.html', {'form':form})

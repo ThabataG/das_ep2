@@ -68,9 +68,12 @@ def form_contact(request):
 		            send_mail(subject, message, from_email, ['das.duvidas.unb@gmail.com'])
 		        except BadHeaderError:
 		            return HttpResponse('Invalid header found.')
-		        return HttpResponseRedirect('/contact/thanks/')
+		        return HttpResponseRedirect('thanks/')
 		    else:
 		        return HttpResponse('Make sure all fields are entered and valid.')
 	else:
 		form = ContactForm()
 	return render (request, 'blog/email.html', {'form':form})
+
+def contact_thanks (request):
+	return render (request, 'blog/thanks.html')

@@ -9,4 +9,5 @@ urlpatterns = [
 	url(r'^publication/(?P<pk>[0-9]+)/edit/$', views.publication_edit, name='publication_edit'),
     url(r'^admin/', include(admin.site.urls) , name='admin'),
     url(r'^contact/$', views.form_contact, name='contact'),
+    url(r'^contact/thanks/$', views.contact_thanks, name='thanks'),
 ]
